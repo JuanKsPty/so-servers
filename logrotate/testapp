@@ -1,0 +1,9 @@
+/var/log/testapp/*.log {
+    daily
+    rotate 115
+    missingok
+    notifempty
+    compress
+    delaycompress
+    copytruncate
+}

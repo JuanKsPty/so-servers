@@ -1,0 +1,17 @@
+{
+  "name": "semestral-app",
+  "version": "1.0.0",
+  "description": "Aplicación Node.js que sirve una página informativa sobre sistemas operativos",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "sistemas-operativos",
+    "node",
+    "nginx"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
