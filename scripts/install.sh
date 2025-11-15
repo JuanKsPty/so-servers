@@ -36,6 +36,10 @@ info "Copiando configuración de Nginx"
 if [ -d "$NGINX_AVAILABLE" ]; then
   sudo cp "${REPO_ROOT}/nginx/server.conf" "${NGINX_AVAILABLE}/testapp"
   sudo ln -sf "${NGINX_AVAILABLE}/testapp" "${NGINX_ENABLED}/testapp"
+  if [ -f "${NGINX_ENABLED}/default" ]; then
+    info "Deshabilitando sitio default de Nginx"
+    sudo rm -f "${NGINX_ENABLED}/default"
+  fi
 else
   sudo cp "${REPO_ROOT}/nginx/server.conf" "$NGINX_CONF_TARGET"
 fi
