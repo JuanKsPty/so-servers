@@ -15,3 +15,5 @@ npm start
 ```
 
 La aplicación expone el puerto `3000`. En producción se recomienda colocar Nginx al frente (configuración incluida en `nginx/server.conf`).
+
+Cada visita queda registrada en `/var/log/testapp/app.log`. Si no cuentas con permisos para esa ruta en tu equipo local, puedes arrancar la app definiendo `APP_LOG=./logs/app.log npm start` y el servidor creará la carpeta automáticamente.
