@@ -1,4 +1,4 @@
-/var/log/testapp/*.log {
+/var/log/testapp/app.log {
     daily
     rotate 115
     missingok
@@ -6,4 +6,16 @@
     compress
     delaycompress
     copytruncate
+}
+
+# Los archivos cpu_usage_*.log y visits_*.log ya tienen fecha en el nombre,
+# solo necesitamos comprimir y limpiar archivos antiguos
+/var/log/testapp/cpu_usage_*.log /var/log/testapp/visits_*.log {
+    daily
+    rotate 115
+    missingok
+    notifempty
+    compress
+    delaycompress
+    nocreate
 }

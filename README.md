@@ -1,11 +1,11 @@
-# so1-semestral-servers
+# so-servers
 
 Repositorio base para el proyecto semestral de Sistemas Operativos 1. Incluye una aplicación Node.js, configuración de Nginx, reglas de logrotate y scripts para instalar todo automáticamente en Ubuntu, Debian o Rocky Linux.
 
 ## Estructura
 
 ```
-so1-semestral-servers/
+so-servers/
 ├── app/              # Código de la app Node.js + assets web
 ├── nginx/            # Configuración para Nginx (reverse proxy)
 ├── logrotate/        # Reglas para rotar logs del proyecto

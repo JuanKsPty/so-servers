@@ -1,11 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
-INTERVAL_SECONDS="${INTERVAL_SECONDS:-1800}"
+INTERVAL_SECONDS="${INTERVAL_SECONDS:-900}"
 LOG_DIR="${MONITOR_LOG_DIR:-/var/log/testapp}"
 STATE_DIR="${MONITOR_STATE_DIR:-/var/lib/testapp}"
-CPU_LOG="${LOG_DIR}/cpu_usage.log"
-VISITS_LOG="${LOG_DIR}/visits.log"
+DATE_SUFFIX="$(date '+%Y-%m-%d')"
+CPU_LOG="${LOG_DIR}/cpu_usage_${DATE_SUFFIX}.log"
+VISITS_LOG="${LOG_DIR}/visits_${DATE_SUFFIX}.log"
 ACCESS_LOG="${ACCESS_LOG:-/var/log/nginx/testapp.access.log}"
 ACCESS_OFFSET_FILE="${STATE_DIR}/access.offset"
 
@@ -71,6 +72,11 @@ log_new_visits() {
 trap 'exit 0' SIGTERM SIGINT
 
 while true; do
+  # Actualizar el sufijo de fecha en cada iteración para cambiar de archivo a medianoche
+  DATE_SUFFIX="$(date '+%Y-%m-%d')"
+  CPU_LOG="${LOG_DIR}/cpu_usage_${DATE_SUFFIX}.log"
+  VISITS_LOG="${LOG_DIR}/visits_${DATE_SUFFIX}.log"
+  
   log_cpu_snapshot
   log_new_visits
   sleep "$INTERVAL_SECONDS"
