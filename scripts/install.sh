@@ -56,7 +56,7 @@ sudo chown -R "$APP_USER":"$APP_USER" /var/log/testapp
 info "Instalando script de monitoreo"
 sudo install -m 0755 "${REPO_ROOT}/scripts/monitor_usage.sh" /usr/local/bin/testapp-monitor.sh
 
-info "Configurando servicio para capturar CPU y visitas cada 30 minutos"
+info "Configurando servicio para capturar CPU y visitas cada 15 minutos"
 sudo tee /etc/systemd/system/testapp-monitor.service >/dev/null <<'EOF'
 [Unit]
 Description=Monitor de CPU y visitas de testapp
